@@ -63,7 +63,7 @@ class DockerRunner:
     def run_container(self):
         container = self.docker_client.containers.run(
             self.docker_image,
-            command=["bash", "-c", self.bash_command],
+            command=["bash", "-c", f"python -u -c '{self.bash_command}'"],
             detach=True,
             stdout=True,
             stderr=True,
